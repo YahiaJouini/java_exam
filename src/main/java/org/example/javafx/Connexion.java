@@ -14,21 +14,12 @@ public class Connexion {
     public static Connection getConnection() {
         if (conn == null) {
             try {
-                // Load the driver - make sure the driver class is available
                 Class.forName("org.postgresql.Driver");
                 System.out.println("PostgreSQL JDBC Driver loaded successfully");
 
-                // Establish connection
                 conn = DriverManager.getConnection(url, user, password);
-                if (conn != null) {
-                    System.out.println("Database connection established successfully");
-                }
-            } catch (ClassNotFoundException e) {
-                System.err.println("PostgreSQL JDBC Driver not found");
-                e.printStackTrace();
-            } catch (SQLException e) {
-                System.err.println("Connection to database failed");
-                e.printStackTrace();
+            } catch (Exception e){
+                System.out.println(e.getMessage());
             }
         }
         return conn;
