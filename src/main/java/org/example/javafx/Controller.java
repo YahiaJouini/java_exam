@@ -57,7 +57,11 @@ public class Controller {
             System.out.println(u.toString());
             text += u.getNom()+" - "+u.getEmail()+" "+u.getRole()+ "\n";
         }
-        textArea.setText(text);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Liste des Utilisateurs");
+        alert.setHeaderText("Utilisateurs trouvés: " + users.size());
+        alert.setContentText(text.toString());
+        alert.show();
     }
 
 

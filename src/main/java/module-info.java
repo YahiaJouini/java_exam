@@ -11,6 +11,7 @@ module org.example.javafx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires mysql.connector.java;
 
     opens org.example.javafx to javafx.fxml;
     exports org.example.javafx;
