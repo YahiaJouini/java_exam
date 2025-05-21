@@ -27,12 +27,21 @@ public class Controller {
 
     @FXML
     private void enregistrer() {
+        String nom = username.getText();
+        String email = password.getText();
 
-        RadioButton selectedRole = (RadioButton) role.getSelectedToggle();
-        String roleSelected = selectedRole == null ? "None" : selectedRole.getText();
+        Toggle selectedToggle = role.getSelectedToggle();
 
-        System.out.println(selectedRole.getText()+" "+username.getText()+" "+password.getText());
+        if (selectedToggle == null) {
+            System.out.println("Please select a role.");
+            return;
+        }
+
+        String roleText = ((RadioButton) selectedToggle).getText();
+        User newUser = new User( nom, email, roleText);
+        UserDao.insertUser(newUser);
     }
+
 
     @FXML
     private void annuler(){
@@ -41,8 +50,7 @@ public class Controller {
 
     @FXML
     private void liste(){
-        UserDao ud = new UserDao();
-        List<User> users = ud.getAllUsers();
+        List<User> users = UserDao.getAllUsers();
 
         String text="";
         for(User u:users){

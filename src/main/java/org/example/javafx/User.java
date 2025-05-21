@@ -1,13 +1,13 @@
 package org.example.javafx;
 
 public class User {
-    private int id;
+    private int id=0;
     private String nom;
     private String email;
     private String role;
 
-    public User(int id, String nom, String email,String role) {
-        this.id = id;
+    public User( String nom, String email,String role) {
+        this.id +=1;
         this.nom = nom;
         this.email = email;
         this.role=role;
